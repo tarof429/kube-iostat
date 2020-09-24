@@ -1,0 +1,1 @@
+docker run --rm -td -p 5000:5000 --name kube-iostat kube-iostat
