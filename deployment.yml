@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-iostat-service
+spec:
+  selector:
+    app: kube-iostat
+  ports:
+  - protocol: "TCP"
+    port: 6000
+    targetPort: 5000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-iostat
+spec:
+  selector:
+    matchLabels:
+      app: kube-iostat
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kube-iostat
+    spec:
+      containers:
+      - name: kube-iostat
+        image: kube-iostat:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000

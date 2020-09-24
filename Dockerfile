@@ -7,7 +7,8 @@ RUN pip install virtualenv && \
     . ./env/bin/activate && \
     ./env/bin/pip install -r requirements.txt
 
-ENV FLASK_APP main.py    
-CMD ["./env/bin/flask", "run", "--host=0.0.0.0"]
+# ENV FLASK_APP main.py    
+# CMD ["./env/bin/flask", "run", "--host=0.0.0.0"]
+CMD ["./env/bin/python", "main.py"]
 
 EXPOSE 5000
